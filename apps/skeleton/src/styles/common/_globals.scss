@@ -1,0 +1,22 @@
+html,
+body {
+	@apply font-sans;
+	margin: 0;
+	padding: 0;
+}
+
+::selection {
+	@apply bg-blue text-white;
+}
+
+a {
+	@apply no-underline text-inherit;
+}
+
+* {
+	@apply box-border;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: -.04em;
+}

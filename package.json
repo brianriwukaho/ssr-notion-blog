@@ -1,0 +1,51 @@
+{
+  "name": "ssr-notion-blog",
+  "version": "1.0.5",
+  "author": "Jos Broers",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel --continue",
+    "clean": "node scripts/clean/clean.mjs",
+    "lint": "turbo run lint",
+    "prepare": "husky install",
+    "upgrade_all": "yarn upgrade-interactive --latest"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "config": "1.0.5",
+    "eslint": "^8.5.0",
+    "husky": "^7.0.4",
+    "prettier": "^2.5.1",
+    "turbo": "1.0.24"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          ".next/**"
+        ]
+      },
+      "lint": {
+        "outputs": []
+      },
+      "dev": {
+        "cache": false
+      },
+      "clean": {
+        "cache": false
+      }
+    }
+  }
+}
